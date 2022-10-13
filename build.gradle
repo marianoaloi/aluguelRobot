@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'io.quarkus'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-arc'
+    implementation 'io.quarkus:quarkus-resteasy-reactive'
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+
+
+
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+
+    implementation 'org.mongodb:mongodb-driver-sync:4.5.1'
+
+    // https://mvnrepository.com/artifact/io.quarkus/quarkus-scheduler
+    implementation 'io.quarkus:quarkus-scheduler:2.11.1.Final'
+
+    implementation 'oauth.signpost:signpost-commonshttp4:2.1.1'
+    implementation 'oauth.signpost:signpost-core:2.1.1'
+
+
+    implementation 'org.apache.httpcomponents:httpasyncclient'
+    implementation 'org.json:json:20220320'
+}
+
+group 'br.com.aloi'
+version '1.0.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
